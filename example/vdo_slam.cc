@@ -14,9 +14,10 @@
 #include<unistd.h>
 
 #include<opencv2/core/core.hpp>
-#include<opencv2/optflow.hpp>
+// #include<opencv2/optflow.hpp>
 
 #include<System.h>
+#include"cvplot/readOptFlow.h"
 
 using namespace std;
 
@@ -102,8 +103,8 @@ int main(int argc, char **argv)
         cout << "Processing Frame: " << ni << endl;
 
         // Read imreadmage and depthmap from file
-        imRGB = cv::imread(vstrFilenamesRGB[ni],CV_LOAD_IMAGE_UNCHANGED);
-        imD   = cv::imread(vstrFilenamesDEP[ni],CV_LOAD_IMAGE_UNCHANGED);
+        imRGB = cv::imread(vstrFilenamesRGB[ni],cv::IMREAD_UNCHANGED);
+        imD   = cv::imread(vstrFilenamesDEP[ni],cv::IMREAD_UNCHANGED);
         cv::Mat imD_f, imD_r;
 
         // // For stereo disparity input
@@ -114,7 +115,8 @@ int main(int argc, char **argv)
         // imD_r.convertTo(imD_f, CV_32F);
 
         // Load flow matrix
-        cv::Mat imFlow = cv::optflow::readOpticalFlow(vstrFilenamesFLO[ni]);
+        // cv::Mat imFlow = cv::optflow::readOpticalFlow(vstrFilenamesFLO[ni]);
+        cv::Mat imFlow = readOpticalFlow(vstrFilenamesFLO[ni]);
         // FlowShow(imFlow);
 
         // Load semantic mask

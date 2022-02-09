@@ -31,18 +31,16 @@ endif()
 LIST(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake_modules)
 
 
-find_package(OpenCV 3.0 QUIET)
-if(NOT OpenCV_FOUND)
-   find_package(OpenCV 2.4.3 QUIET)
+find_package(OpenCV 4.2.0 REQUIRED)
    if(NOT OpenCV_FOUND)
-      message(FATAL_ERROR "OpenCV > 2.4.3 not found.")
+      message(FATAL_ERROR "OpenCV > 4.2.0 not found.")
    endif()
-endif()
 
 find_package(Eigen3 3.1.0 REQUIRED)
 find_package(CSparse REQUIRED)
 
 include_directories(
+${OpenCV_INCLUDE_DIRS}
 ${PROJECT_SOURCE_DIR}
 ${PROJECT_SOURCE_DIR}/include
 ${EIGEN3_INCLUDE_DIR}
@@ -65,6 +63,7 @@ src/cvplot/figure.cc
 src/cvplot/highgui.cc
 src/cvplot/window.cc
 src/cvplot/internal.h
+src/cvplot/readOptFlow.cpp
 )
 
 target_link_libraries(
@@ -76,9 +75,10 @@ ${CSPARSE_LIBRARY}
 #${PROJECT_SOURCE_DIR}/dependencies/g2o/lib/libg2o.dylib
 # for linux (ubuntu)
 ${PROJECT_SOURCE_DIR}/dependencies/g2o/lib/libg2o.so
+#/usr/lib/x86_64-linux-gnu/libopencv_optflow.so.4.2.0
 )
 
-
+message(STATUS "OpenCV_LIBS = ${OpenCV_LIBS}")
 # Build example
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/example)

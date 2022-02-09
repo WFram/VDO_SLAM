@@ -68,6 +68,7 @@ build/CMakeFiles/rgbd_tum.dir/link.txt
 build/CMakeFiles/rgbd_tum.dir/progress.make
 build/CMakeFiles/TargetDirectories.txt
 build/Makefile
+build/*
 Examples/RGB-D/rgbd_tum
 Thirdparty/DBoW2/build/cmake_install.cmake
 Thirdparty/DBoW2/build/CMakeCache.txt
@@ -98,6 +99,7 @@ Thirdparty/DBoW2/build/CMakeFiles/Makefile2
 Thirdparty/DBoW2/build/CMakeFiles/progress.marks
 Thirdparty/DBoW2/build/CMakeFiles/TargetDirectories.txt
 Thirdparty/DBoW2/build/Makefile
+Thirdparty/DBoW2/build/*
 Thirdparty/g2o/build/cmake_install.cmake
 Thirdparty/g2o/build/CMakeCache.txt
 Thirdparty/g2o/build/CMakeFiles/3.12.1/CMakeCCompiler.cmake
@@ -130,6 +132,7 @@ Thirdparty/g2o/build/CMakeFiles/Makefile2
 Thirdparty/g2o/build/CMakeFiles/progress.marks
 Thirdparty/g2o/build/CMakeFiles/TargetDirectories.txt
 Thirdparty/g2o/build/Makefile
+dependencies/g2o/build/*
 Vocabulary/ORBvoc.txt
 Examples/RGB-D/rgbd_tum
 Examples/RGB-D/rgbd_tum
@@ -201,3 +204,4 @@ dependencies/g2o/build/Makefile
 example/vdo_slam
 track_distribution.txt
 track_distribution_static.txt
+.vscode/settings.json

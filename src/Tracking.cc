@@ -209,16 +209,16 @@ cv::Mat Tracking::GrabImageRGBD(const cv::Mat &imRGB, cv::Mat &imD, const cv::Ma
     if(mImGray.channels()==3)
     {
         if(mbRGB)
-            cvtColor(mImGray,mImGray,CV_RGB2GRAY);
+            cvtColor(mImGray,mImGray,cv::COLOR_RGB2GRAY);
         else
-            cvtColor(mImGray,mImGray,CV_BGR2GRAY);
+            cvtColor(mImGray,mImGray,cv::COLOR_BGR2GRAY);
     }
     else if(mImGray.channels()==4)
     {
         if(mbRGB)
-            cvtColor(mImGray,mImGray,CV_RGBA2GRAY);
+            cvtColor(mImGray,mImGray,cv::COLOR_RGBA2GRAY);
         else
-            cvtColor(mImGray,mImGray,CV_BGRA2GRAY);
+            cvtColor(mImGray,mImGray,cv::COLOR_BGRA2GRAY);
     }
 
     // Save map in the tracking head (new added Nov 14 2019)
@@ -380,7 +380,7 @@ cv::Mat Tracking::GrabImageRGBD(const cv::Mat &imRGB, cv::Mat &imD, const cv::Ma
                 continue;
             if(maskSEM.at<int>(KeyPoints_tmp[0].pt.y,KeyPoints_tmp[0].pt.x)!=0)
                 continue;
-            cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(0,0,0), 1); // red
+            cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(0,0,0), cv::DrawMatchesFlags::DRAW_OVER_OUTIMG); // red
         }
         // static and dynamic objects
         for (int i = 0; i < mCurrentFrame.vObjLabel.size(); ++i)
@@ -398,85 +398,85 @@ cv::Mat Tracking::GrabImageRGBD(const cv::Mat &imRGB, cv::Mat &imD, const cv::Ma
             switch (l)
             {
                 case 0:
-                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(0,0,255), 1); // red
+                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(0,0,255), cv::DrawMatchesFlags::DRAW_OVER_OUTIMG); // red
                     break;
                 case 1:
-                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(128, 0, 128), 1); // 255, 165, 0
+                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(128, 0, 128), cv::DrawMatchesFlags::DRAW_OVER_OUTIMG); // 255, 165, 0
                     break;
                 case 2:
-                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(255,255,0), 1);
+                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(255,255,0), cv::DrawMatchesFlags::DRAW_OVER_OUTIMG);
                     break;
                 case 3:
-                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(0, 255, 0), 1); // 255,255,0
+                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(0, 255, 0), cv::DrawMatchesFlags::DRAW_OVER_OUTIMG); // 255,255,0
                     break;
                 case 4:
-                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(255,0,0), 1); // 255,192,203
+                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(255,0,0), cv::DrawMatchesFlags::DRAW_OVER_OUTIMG); // 255,192,203
                     break;
                 case 5:
-                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(0,255,255), 1);
+                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(0,255,255), cv::DrawMatchesFlags::DRAW_OVER_OUTIMG);
                     break;
                 case 6:
-                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(128, 0, 128), 1);
+                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(128, 0, 128), cv::DrawMatchesFlags::DRAW_OVER_OUTIMG);
                     break;
                 case 7:
-                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(255,255,255), 1);
+                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(255,255,255), cv::DrawMatchesFlags::DRAW_OVER_OUTIMG);
                     break;
                 case 8:
-                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(255,228,196), 1);
+                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(255,228,196), cv::DrawMatchesFlags::DRAW_OVER_OUTIMG);
                     break;
                 case 9:
-                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(180, 105, 255), 1);
+                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(180, 105, 255), cv::DrawMatchesFlags::DRAW_OVER_OUTIMG);
                     break;
                 case 10:
-                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(165,42,42), 1);
+                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(165,42,42), cv::DrawMatchesFlags::DRAW_OVER_OUTIMG);
                     break;
                 case 11:
-                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(35, 142, 107), 1);
+                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(35, 142, 107), cv::DrawMatchesFlags::DRAW_OVER_OUTIMG);
                     break;
                 case 12:
-                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(45, 82, 160), 1);
+                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(45, 82, 160), cv::DrawMatchesFlags::DRAW_OVER_OUTIMG);
                     break;
                 case 13:
-                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(0,0,255), 1); // red
+                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(0,0,255), cv::DrawMatchesFlags::DRAW_OVER_OUTIMG); // red
                     break;
                 case 14:
-                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(255, 165, 0), 1);
+                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(255, 165, 0), cv::DrawMatchesFlags::DRAW_OVER_OUTIMG);
                     break;
                 case 15:
-                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(0,255,0), 1);
+                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(0,255,0), cv::DrawMatchesFlags::DRAW_OVER_OUTIMG);
                     break;
                 case 16:
-                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(255,255,0), 1);
+                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(255,255,0), cv::DrawMatchesFlags::DRAW_OVER_OUTIMG);
                     break;
                 case 17:
-                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(255,192,203), 1);
+                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(255,192,203), cv::DrawMatchesFlags::DRAW_OVER_OUTIMG);
                     break;
                 case 18:
-                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(0,255,255), 1);
+                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(0,255,255), cv::DrawMatchesFlags::DRAW_OVER_OUTIMG);
                     break;
                 case 19:
-                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(128, 0, 128), 1);
+                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(128, 0, 128), cv::DrawMatchesFlags::DRAW_OVER_OUTIMG);
                     break;
                 case 20:
-                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(255,255,255), 1);
+                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(255,255,255), cv::DrawMatchesFlags::DRAW_OVER_OUTIMG);
                     break;
                 case 21:
-                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(255,228,196), 1);
+                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(255,228,196), cv::DrawMatchesFlags::DRAW_OVER_OUTIMG);
                     break;
                 case 22:
-                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(180, 105, 255), 1);
+                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(180, 105, 255), cv::DrawMatchesFlags::DRAW_OVER_OUTIMG);
                     break;
                 case 23:
-                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(165,42,42), 1);
+                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(165,42,42), cv::DrawMatchesFlags::DRAW_OVER_OUTIMG);
                     break;
                 case 24:
-                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(35, 142, 107), 1);
+                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(35, 142, 107), cv::DrawMatchesFlags::DRAW_OVER_OUTIMG);
                     break;
                 case 25:
-                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(45, 82, 160), 1);
+                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(45, 82, 160), cv::DrawMatchesFlags::DRAW_OVER_OUTIMG);
                     break;
                 case 41:
-                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(60, 20, 220), 1);
+                    cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(60, 20, 220), cv::DrawMatchesFlags::DRAW_OVER_OUTIMG);
                     break;
             }
         }
@@ -493,7 +493,7 @@ cv::Mat Tracking::GrabImageRGBD(const cv::Mat &imRGB, cv::Mat &imD, const cv::Ma
     if(timestamp!=0 && bFrame2Frame == true && mTestData==KITTI)
     {
         cv::Mat mImBGR(mImGray.size(), CV_8UC3);
-        cvtColor(mImGray, mImBGR, CV_GRAY2RGB);
+        cvtColor(mImGray, mImBGR, cv::COLOR_GRAY2RGB);
         for (int i = 0; i < mCurrentFrame.vObjBoxID.size(); ++i)
         {
             if (mCurrentFrame.vSpeed[i].x==0)
@@ -526,7 +526,7 @@ cv::Mat Tracking::GrabImageRGBD(const cv::Mat &imRGB, cv::Mat &imD, const cv::Ma
         int y = int(CamPos.at<float>(2,3)*scale) + sta_y;
         // cv::circle(imTraj, cv::Point(x, y), radi, CV_RGB(255,0,0), thic);
         cv::rectangle(imTraj, cv::Point(x, y), cv::Point(x+5, y+5), cv::Scalar(0,0,255),1);
-        cv::rectangle(imTraj, cv::Point(10, 30), cv::Point(550, 60), CV_RGB(0,0,0), CV_FILLED);
+        cv::rectangle(imTraj, cv::Point(10, 30), cv::Point(550, 60), CV_RGB(0,0,0), cv::FILLED);
         cv::putText(imTraj, "Camera Trajectory (RED SQUARE)", cv::Point(10, 30), cv::FONT_HERSHEY_COMPLEX, 0.6, CV_RGB(255, 255, 255), 1);
         char text[100];
         sprintf(text, "x = %02fm y = %02fm z = %02fm", CamPos.at<float>(0,3), CamPos.at<float>(1,3), CamPos.at<float>(2,3));

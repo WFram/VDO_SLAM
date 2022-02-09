@@ -22,6 +22,7 @@
 #include "System.h"
 
 #include <mutex>
+#include <fstream>
 
 namespace VDO_SLAM
 {
