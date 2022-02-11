@@ -1,4 +1,6 @@
 #include"cvplot/readOptFlow.h"
+#include"opencv2/imgproc.hpp"
+#include"opencv2/video/tracking.hpp"
 
 using namespace std;
 
@@ -42,4 +44,13 @@ cv::Mat readOpticalFlow(const string& path)
     }
     file.close();
     return std::move(flow);
+}
+
+cv::Mat denseOpticalFlow(const cv::Mat& img, const cv::Mat& img_prev) {
+    cvtColor(img, img, cv::COLOR_BGR2GRAY);
+    cvtColor(img_prev, img_prev, cv::COLOR_BGR2GRAY);
+    
+    cv::Mat flow(img_prev.size(), CV_32FC2);
+    calcOpticalFlowFarneback(img_prev, img, flow, 0.5, 3, 15, 3, 5, 1.2, 0);
+    return(flow);
 }
