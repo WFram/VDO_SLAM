@@ -115,8 +115,8 @@ int main(int argc, char **argv)
         // imD_r.convertTo(imD_f, CV_32F);
 
         // Load flow matrix
-        // imFlow = readOpticalFlow(vstrFilenamesFLO[ni]);
-        // imRGB.copyTo(imRGB_prev);
+        // cv::Mat imFlow = cv::optflow::readOpticalFlow(vstrFilenamesFLO[ni]);
+        cv::Mat imFlow = readOpticalFlow(vstrFilenamesFLO[ni]);
         // Load semantic mask
         cv::Mat imSem(imRGB.rows, imRGB.cols, CV_32SC1);
         LoadMask(vstrFilenamesSEM[ni],imSem);
@@ -135,12 +135,9 @@ int main(int argc, char **argv)
             return 1;
         }
 
-        cv::Mat imRGB_prev;
         // Pass the image to the SLAM system
-        if (ni != 0) {
-            cv::Mat imFlow = denseOpticalFlow(imRGB, imRGB_prev);
-            SLAM.TrackRGBD(imRGB,imD_f,imFlow,imSem,mTcw_gt,vObjPose_gt,tframe,imTraj,nImages);
-        }
+        SLAM.TrackRGBD(imRGB,imD_f,imFlow,imSem,mTcw_gt,vObjPose_gt,tframe,imTraj,nImages);
+
     }
 
     // Save camera trajectory
