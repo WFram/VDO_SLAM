@@ -120,7 +120,6 @@ int main(int argc, char **argv)
         // Load semantic mask
         cv::Mat imSem(imRGB.rows, imRGB.cols, CV_32SC1);
         LoadMask(vstrFilenamesSEM[ni],imSem);
-        //
         double tframe = vTimestamps[ni];
         mTcw_gt = vPoseGT[ni];
 
@@ -136,6 +135,7 @@ int main(int argc, char **argv)
         }
 
         cv::Mat imRGB_prev;
+        //
         // Pass the image to the SLAM system
         if (ni != 0) {
             cv::Mat imFlow = denseOpticalFlow(imRGB, imRGB_prev);
