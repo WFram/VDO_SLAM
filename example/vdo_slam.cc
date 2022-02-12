@@ -135,7 +135,7 @@ int main(int argc, char **argv)
         }
 
         cv::Mat imRGB_prev;
-        //
+        // //
         // Pass the image to the SLAM system
         if (ni != 0) {
             cv::Mat imFlow = denseOpticalFlow(imRGB, imRGB_prev);
